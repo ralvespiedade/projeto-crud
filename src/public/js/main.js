@@ -1,0 +1,1 @@
+console.log('Tudo ok, no main.js')
