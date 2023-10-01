@@ -1,0 +1,31 @@
+<body>
+    
+    <h1><%=title%></h1>
+    <%- include('partials/navBar.ejs') %>
+
+    <% if (typeof message !== 'undefined') { %>
+        <%= message %>
+    <% } %>
+
+    <form action="/edit/<%= user._id %>" method="POST">
+        <div>
+            <label for="name"><Nome></label>
+            <input type="text" name="name" id="name" value="<%= user.name %>">
+        </div>
+        <div>
+            <label for="age">Idade</label>
+            <input type="text" name="age" id="age" value="<%= user.age %>">
+        </div>
+        <div>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" value="<%= user.email %>">
+        </div>
+        
+        <button type="submit">Editar</button>
+    </form>
+
+    <!-- <p>Cadastro Realizado com Sucesso!!</p> -->
+
+    <%- include('partials/foot.ejs') %>
+</body>
+</html>

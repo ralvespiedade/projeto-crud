@@ -1,7 +1,17 @@
 const express = require('express')
 const path = require('path')
 
+const db = require('./database')
+const routes = require('./routes')
+
+
+
 const app = express()
+
+
+//--DATABASE CONECTION --
+db.connect()
+
 
 //Defining the template engine
 app.set('view engine', 'ejs')
@@ -15,16 +25,13 @@ app.use(express.urlencoded({ extended: true }))
 
 //-- ROUTS --
 
-app.get('/', (req, res) => {
-    res.render('index.ejs', {
-        title: 'Home'
-    })
-})
+app.use('/', routes)
 
 // 404 error (not found)
 app.get((req, res) => {
     res.send('Page not found!')
 })
+
 
 //-- RUNNING SERVER --
 
